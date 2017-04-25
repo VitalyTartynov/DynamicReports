@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,16 +44,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportManagerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DynamicReports.Core\DynamicReports.Core.csproj">
       <Project>{08fb57d2-1ec1-4bf7-a795-8c9f44816986}</Project>
       <Name>DynamicReports.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DynamicReports.MsWord\DynamicReports.MsWord.csproj">
+    <ProjectReference Include="..\DynamicReports.Plugin.MsWord\DynamicReports.Plugin.MsWord.csproj">
       <Project>{60711cf8-c694-4f15-990b-2d80bf99469e}</Project>
-      <Name>DynamicReports.MsWord</Name>
+      <Name>DynamicReports.Plugin.MsWord</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

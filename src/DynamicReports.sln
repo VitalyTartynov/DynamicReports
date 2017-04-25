@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicReports.Core", "Dyna
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicReports.Tests", "DynamicReports.Tests\DynamicReports.Tests.csproj", "{16D8CE78-3D79-41B4-8579-4DEAE4698146}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicReports.MsWord", "DynamicReports.MsWord\DynamicReports.MsWord.csproj", "{60711CF8-C694-4F15-990B-2D80BF99469E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicReports.Plugin.MsWord", "DynamicReports.Plugin.MsWord\DynamicReports.Plugin.MsWord.csproj", "{60711CF8-C694-4F15-990B-2D80BF99469E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
