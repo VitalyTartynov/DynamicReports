@@ -8,13 +8,23 @@
 // </summary>
 // \***************************************************************************/
 
+using System.IO;
+
 namespace DynamicReports.Core
 {
     public class ReportConfiguration
     {
-        public ReportConfiguration()
-        {
+        public string TemplateName { get; }
+        public string TemplateExtension => Path.GetExtension(TemplateName);
 
+        public ReportConfiguration(string templateName, string pathToTemplates = null)
+        {
+            TemplateName = templateName;
+
+            if (pathToTemplates == null)
+            {
+                pathToTemplates = Directory.GetCurrentDirectory();
+            }
         }
     }
 }

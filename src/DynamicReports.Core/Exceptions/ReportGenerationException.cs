@@ -14,6 +14,9 @@ namespace DynamicReports.Core
 {
     public class ReportGenerationException : Exception
     {
-        
+        public ReportGenerationException(string message) 
+            : base(message)
+        {
+        }
     }
 }

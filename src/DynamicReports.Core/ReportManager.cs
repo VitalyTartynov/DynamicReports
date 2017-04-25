@@ -22,9 +22,9 @@ namespace DynamicReports.Core
 
         protected ICollection<IPlugin> Plugins { get; }
 
-        public ReportManager(string pathToPlugins = "")
+        public ReportManager(string pathToPlugins = null)
         {
-            if (pathToPlugins == string.Empty)
+            if (pathToPlugins == null)
             {
                 pathToPlugins = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             }
@@ -60,9 +60,13 @@ namespace DynamicReports.Core
             return result;
         }
 
-        public void Generate(string templateName)
+        public void Generate(ReportConfiguration configuration)
         {
-            throw new NotImplementedException();
+            var plugin = Plugins.FirstOrDefault(x => x.Extension == configuration.TemplateExtension);
+            if (plugin == null)
+            {
+                throw new ReportGenerationException($"Plugin for file type '{configuration.TemplateExtension}' not found");
+            }
         }
     }
 }

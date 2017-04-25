@@ -16,11 +16,12 @@ namespace DynamicReports.Core.Tests
     public class ReportManagerTests
     {
         [Test]
-        public void UsageSample()
+        public void TryGenerateWithoutPlugins()
         {
-            var templateName = "TestTemplate.dotx";
+            var configuration = new ReportConfiguration("TestTemplate.dotx");
             var reportManager = new ReportManager(); // init, load plugins
-            reportManager.Generate(templateName);
+
+            Assert.Throws<ReportGenerationException>(() => reportManager.Generate(configuration));
         }
     }
 }

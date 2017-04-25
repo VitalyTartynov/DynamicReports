@@ -14,7 +14,7 @@ namespace DynamicReports.MsWord
 {
     public class MsWordPlugin : IPlugin
     {
-        public string Extension => "dotx";
+        public string Extension => ".dotx";
         public string Name => "Microsoft Word";
 
         public void OnLoading()
