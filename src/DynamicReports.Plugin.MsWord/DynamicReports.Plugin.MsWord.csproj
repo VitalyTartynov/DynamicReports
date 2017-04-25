@@ -7,8 +7,8 @@
     <ProjectGuid>{60711CF8-C694-4F15-990B-2D80BF99469E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DynamicReports.MsWord</RootNamespace>
-    <AssemblyName>DynamicReports.MsWord</AssemblyName>
+    <RootNamespace>DynamicReports.Plugin.MsWord</RootNamespace>
+    <AssemblyName>DynamicReports.Plugin.MsWord</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
