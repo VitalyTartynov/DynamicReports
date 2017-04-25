@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicReports.Core", "DynamicReports.Core\DynamicReports.Core.csproj", "{08FB57D2-1EC1-4BF7-A795-8C9F44816986}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicReports.Tests", "DynamicReports.Tests\DynamicReports.Tests.csproj", "{16D8CE78-3D79-41B4-8579-4DEAE4698146}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicReports.MsWord", "DynamicReports.MsWord\DynamicReports.MsWord.csproj", "{60711CF8-C694-4F15-990B-2D80BF99469E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08FB57D2-1EC1-4BF7-A795-8C9F44816986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08FB57D2-1EC1-4BF7-A795-8C9F44816986}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08FB57D2-1EC1-4BF7-A795-8C9F44816986}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08FB57D2-1EC1-4BF7-A795-8C9F44816986}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16D8CE78-3D79-41B4-8579-4DEAE4698146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16D8CE78-3D79-41B4-8579-4DEAE4698146}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16D8CE78-3D79-41B4-8579-4DEAE4698146}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16D8CE78-3D79-41B4-8579-4DEAE4698146}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60711CF8-C694-4F15-990B-2D80BF99469E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60711CF8-C694-4F15-990B-2D80BF99469E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60711CF8-C694-4F15-990B-2D80BF99469E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60711CF8-C694-4F15-990B-2D80BF99469E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
