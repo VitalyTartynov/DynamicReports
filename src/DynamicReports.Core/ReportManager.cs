@@ -67,6 +67,8 @@ namespace DynamicReports.Core
             {
                 throw new ReportGenerationException($"Plugin for file type '{configuration.TemplateExtension}' not found");
             }
+            
+            throw new NotImplementedException();
         }
     }
 }

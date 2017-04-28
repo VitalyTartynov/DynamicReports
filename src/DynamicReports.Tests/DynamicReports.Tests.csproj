@@ -7,8 +7,8 @@
     <ProjectGuid>{16D8CE78-3D79-41B4-8579-4DEAE4698146}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DynamicReports.Core.Tests</RootNamespace>
-    <AssemblyName>DynamicReports.Core.Tests</AssemblyName>
+    <RootNamespace>DynamicReports.Tests</RootNamespace>
+    <AssemblyName>DynamicReports.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -61,6 +61,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="TestTemplates\TestTemplate.dotx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
