@@ -48,6 +48,7 @@ namespace DynamicReports.Core
                     var plugin = Activator.CreateInstance(pluginType) as IPlugin;
                     if (plugin == null) continue;
                         
+                    plugin.OnLoading();
                     result.Add(plugin);
                 }
                 catch (Exception)
@@ -67,8 +68,8 @@ namespace DynamicReports.Core
             {
                 throw new ReportGenerationException($"Plugin for file type '{configuration.TemplateExtension}' not found");
             }
-            
-            throw new NotImplementedException();
+
+            plugin.Generate(configuration);
         }
     }
 }

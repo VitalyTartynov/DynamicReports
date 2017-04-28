@@ -16,8 +16,13 @@ namespace DynamicReports.Plugin.MsWord
     {
         public string Extension => Constants.MsWordExtension;
         public string Name => Constants.MsWordPluginName;
+        public string Note => "Plugin for working with Microsoft Word templates throught OpenXML API";
 
         public void OnLoading()
+        {
+        }
+
+        public void Generate(ReportConfiguration configuration)
         {
             throw new System.NotImplementedException();
         }

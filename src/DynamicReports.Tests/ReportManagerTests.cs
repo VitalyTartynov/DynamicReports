@@ -9,10 +9,10 @@
 // \***************************************************************************/
 
 using System;
-using System.IO;
 using System.Linq;
-using System.Reflection;
+
 using DynamicReports.Core;
+
 using FluentAssert;
 using NUnit.Framework;
 
@@ -33,7 +33,6 @@ namespace DynamicReports.Tests
         public void TryGenerateMsWordReport()
         {
             var reportManager = new ReportManager();
-            
             var configuration = new ReportConfiguration("TestTemplate.dotx", Helpers.PathToTestTemplates);
 
             reportManager.Plugins.FirstOrDefault(x => x.Name == Constants.MsWordPluginName).ShouldNotBeNull();

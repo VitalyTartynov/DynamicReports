@@ -14,11 +14,11 @@ namespace DynamicReports.Core
     {
         string Extension { get; }
         string Name { get; }
+        string Note { get; }
 
         void OnLoading();
 
-        
-
+        void Generate(ReportConfiguration configuration);
 
         void Save(string filename);
     }
