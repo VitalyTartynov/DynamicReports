@@ -33,10 +33,10 @@ namespace DynamicReports.Tests
         public void TryGenerateMsWordReport()
         {
             var reportManager = new ReportManager();
-            var pathToTemplates = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "TestTemplates");
-            var configuration = new ReportConfiguration("TestTemplate.dotx", pathToTemplates);
+            
+            var configuration = new ReportConfiguration("TestTemplate.dotx", Helpers.PathToTestTemplates);
 
-            reportManager.Plugins.FirstOrDefault(x => x.Name == "Microsoft Word").ShouldNotBeNull();
+            reportManager.Plugins.FirstOrDefault(x => x.Name == Constants.MsWordPluginName).ShouldNotBeNull();
             Assert.Throws<NotImplementedException>(() => reportManager.Generate(configuration));
         }
     }

@@ -10,12 +10,12 @@
 
 using DynamicReports.Core;
 
-namespace DynamicReports.MsWord
+namespace DynamicReports.Plugin.MsWord
 {
     public class MsWordPlugin : IPlugin
     {
-        public string Extension => ".dotx";
-        public string Name => "Microsoft Word";
+        public string Extension => Constants.MsWordExtension;
+        public string Name => Constants.MsWordPluginName;
 
         public void OnLoading()
         {
