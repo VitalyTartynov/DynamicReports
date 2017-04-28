@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26403.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicReports.Core", "DynamicReports.Core\DynamicReports.Core.csproj", "{08FB57D2-1EC1-4BF7-A795-8C9F44816986}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicReports.Tests", "DynamicReports.Tests\DynamicReports.Tests.csproj", "{16D8CE78-3D79-41B4-8579-4DEAE4698146}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicReports.Core.Tests", "DynamicReports.Tests\DynamicReports.Core.Tests.csproj", "{16D8CE78-3D79-41B4-8579-4DEAE4698146}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicReports.Plugin.MsWord", "DynamicReports.Plugin.MsWord\DynamicReports.Plugin.MsWord.csproj", "{60711CF8-C694-4F15-990B-2D80BF99469E}"
 EndProject

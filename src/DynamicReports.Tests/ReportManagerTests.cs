@@ -9,6 +9,7 @@
 // \***************************************************************************/
 
 using NUnit.Framework;
+using FluentAssert;
 
 namespace DynamicReports.Core.Tests
 {
@@ -16,12 +17,12 @@ namespace DynamicReports.Core.Tests
     public class ReportManagerTests
     {
         [Test]
-        public void TryGenerateWithoutPlugins()
+        public void TryLoadingPlugins()
         {
             var configuration = new ReportConfiguration("TestTemplate.dotx");
             var reportManager = new ReportManager(); // init, load plugins
-
-            Assert.Throws<ReportGenerationException>(() => reportManager.Generate(configuration));
+            
+            reportManager.Plugins.Count.ShouldBeGreaterThan(0);
         }
     }
 }

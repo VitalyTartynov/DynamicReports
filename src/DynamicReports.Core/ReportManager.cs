@@ -20,7 +20,7 @@ namespace DynamicReports.Core
     {
         private const string PluginMask = "DynamicReports.Plugin.*.dll";
 
-        protected ICollection<IPlugin> Plugins { get; }
+        internal ICollection<IPlugin> Plugins { get; }
 
         public ReportManager(string pathToPlugins = null)
         {
@@ -50,7 +50,7 @@ namespace DynamicReports.Core
                         
                     result.Add(plugin);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     // TODO: TartunovVA - это не должна быть ошибка с выходом
                     //throw new PluginException($"An error has occurred when load assembly '{pluginFilename}'", e);
