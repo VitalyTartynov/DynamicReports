@@ -15,6 +15,8 @@ namespace DynamicReports.Core
 {
     public interface IReportManager
     {
-        void Generate([NotNull]ReportConfiguration configuration, [NotNull]Dictionary<string,object> data);
+        void Generate([NotNull]ReportConfiguration configuration, [NotNull]Dictionary<string, object> data);
+
+        void Generate([NotNull]ReportConfiguration configuration, [NotNull]IEnumerable<object> data);
     }
 }

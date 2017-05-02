@@ -34,7 +34,7 @@ namespace DynamicReports.Tests
         {
             var reportManager = new ReportManager();
             var configuration = new ReportConfiguration("UnknownTemplate.unknown");
-            var emptyData = new Dictionary<string, object>();
+            var emptyData = new List<object>();
 
             Assert.Throws<PluginNotFoundException>(() => reportManager.Generate(configuration, emptyData));
         }

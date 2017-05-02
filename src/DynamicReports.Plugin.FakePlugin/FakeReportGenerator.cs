@@ -17,12 +17,19 @@ namespace DynamicReports.Plugin.FakePlugin
     public class FakeReportGenerator : IReportGenerator
     {
         private ReportConfiguration _configuration;
-        private Dictionary<string, object> _data;
+        private IEnumerable<object> _data;
+        private Dictionary<string, object> _dictionaryData;
+
+        public void Initialize(ReportConfiguration configuration, IEnumerable<object> data)
+        {
+            _configuration = configuration;
+            _data = data;
+        }
 
         public void Initialize(ReportConfiguration configuration, Dictionary<string, object> data)
         {
             _configuration = configuration;
-            _data = data;
+            _dictionaryData = data;
         }
 
         public void PrepareTemplate()

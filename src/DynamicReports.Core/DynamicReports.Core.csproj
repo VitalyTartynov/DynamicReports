@@ -53,6 +53,7 @@
     <Compile Include="Exceptions\ReportGenerationException.cs" />
     <Compile Include="ReportManager\ReportManager.cs" />
     <Compile Include="ReportManager\IReportManager.cs" />
+    <Compile Include="Tags.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

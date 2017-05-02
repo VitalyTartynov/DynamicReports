@@ -24,7 +24,7 @@ namespace DynamicReports.Tests
         {
             var reportManager = new ReportManager();
             var configuration = new ReportConfiguration("FakeTemplate" + FakePluginConstants.TemplateExtension);
-            var emptyData = new Dictionary<string, object>();
+            var emptyData = new List<object>();
 
             Assert.Throws<NotImplementedException>(() => reportManager.Generate(configuration, emptyData));
         }

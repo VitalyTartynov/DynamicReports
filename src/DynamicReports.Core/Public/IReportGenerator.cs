@@ -15,6 +15,7 @@ namespace DynamicReports.Core
 {
     public interface IReportGenerator
     {
+        void Initialize([NotNull]ReportConfiguration configuration, IEnumerable<object> data);
         void Initialize([NotNull]ReportConfiguration configuration, Dictionary<string, object> data);
         void PrepareTemplate();
         void InsertData();

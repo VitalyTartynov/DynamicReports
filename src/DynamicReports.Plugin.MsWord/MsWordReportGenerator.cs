@@ -11,6 +11,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
@@ -21,17 +22,32 @@ namespace DynamicReports.Plugin.MsWord
     public class MsWordReportGenerator : IReportGenerator
     {
         private ReportConfiguration _configuration;
-        private Dictionary<string, object> _data;
+        private IEnumerable<object> _data;
+        private Dictionary<string, object> _dictionaryData;
 
-        public void Initialize(ReportConfiguration configuration, Dictionary<string, object> data)
+        private void Initialize(ReportConfiguration configuration)
         {
             _configuration = configuration;
             _configuration.TargetFilename = _configuration.TargetFilename.Replace(MsWordPluginConstants.TemplateExtension,
                 MsWordPluginConstants.TargetExtension);
+        }
+
+        public void Initialize(ReportConfiguration configuration, IEnumerable<object> data)
+        {
+            Initialize(configuration);
 
             if (data == null || !data.Any())
                 throw new ReportGenerationException("Нет данных для заполнения шаблона отчёта");
             _data = data;
+        }
+
+        public void Initialize(ReportConfiguration configuration, Dictionary<string, object> data)
+        {
+            Initialize(configuration);
+
+            if (data == null || !data.Any())
+                throw new ReportGenerationException("Нет данных для заполнения шаблона отчёта");
+            _dictionaryData = data;
         }
 
         public void PrepareTemplate()
@@ -58,9 +74,24 @@ namespace DynamicReports.Plugin.MsWord
                     {
                         var currentCell = cells.ElementAt(column);
                         var text = currentCell.InnerText;
+
+                        foreach (Match match in Tags.FullTag.Matches(text))
+                        {
+                            var fullTag = match.Value;
+                            var nameTag = Tags.NameTag.Match(fullTag).Value;
+
+                            var data = _dictionaryData[nameTag];
+
+                            var paragraph = currentCell.Elements<Paragraph>().First();
+                            var textElement = paragraph.Elements<Run>().First().Elements<Text>().First();
+                            textElement.Text = data.ToString();
+                        }
                     }
                 }
             }
+
+            document.Save();
+            document.Close();
         }
 
         public void Save()

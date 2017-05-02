@@ -61,7 +61,23 @@ namespace DynamicReports.Core
             return result;
         }
 
-        public virtual void Generate(ReportConfiguration configuration, Dictionary<string, object> data)
+        public void Generate(ReportConfiguration configuration, Dictionary<string, object> data)
+        {
+            var plugin = PluginMetadatas.FirstOrDefault(x => x.TemplateExtension == configuration.TemplateExtension);
+            if (plugin == null)
+            {
+                throw new PluginNotFoundException($"Plugin for file type '{configuration.TemplateExtension}' not found");
+            }
+
+            plugin.Instance.Initialize(configuration, data);
+            plugin.Instance.PrepareTemplate();
+            plugin.Instance.InsertData();
+            plugin.Instance.Save();
+
+            Open(configuration.FullTargetPath);
+        }
+
+        public virtual void Generate(ReportConfiguration configuration, IEnumerable<object> data)
         {
             var plugin = PluginMetadatas.FirstOrDefault(x => x.TemplateExtension == configuration.TemplateExtension);
             if (plugin == null)

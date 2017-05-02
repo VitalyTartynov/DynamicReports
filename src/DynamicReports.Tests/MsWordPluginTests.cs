@@ -27,11 +27,30 @@ namespace DynamicReports.Tests
         {
             var reportManager = new ReportManager();
             var configuration = new ReportConfiguration("SimpleInsertDataTemplate.dotx", Helpers.PathToTestTemplates);
-            var emptyDatas = new Dictionary<string, object>();
+            var emptyDatas = new List<object>();
 
             reportManager.PluginMetadatas.Any(x => x.Name == MsWordPluginConstants.PluginName).ShouldBeTrue();
 
             Assert.Throws<ReportGenerationException>(() => reportManager.Generate(configuration, emptyDatas));
+        }
+
+        [Test]
+        public void InsertRowsFromCollection()
+        {
+            var reportManager = new ReportManager();
+            var configuration = new ReportConfiguration("InsertRowsTemplate.dotx", Helpers.PathToTestTemplates);
+            var data = new List<object>
+            {
+                new TestObject {Column1 = "1 : 1", Column2 = "2 : 1", Column3 = "3 : 1"},
+                new TestObject {Column1 = "1 : 2", Column2 = "2 : 2", Column3 = "3 : 2"},
+            };
+
+            reportManager.PluginMetadatas.Any(x => x.Name == MsWordPluginConstants.PluginName).ShouldBeTrue();
+            reportManager.Generate(configuration, data);
+
+            File.Exists(configuration.FullTargetPath).ShouldBeTrue();
+
+            Assert.Fail();
         }
 
         [Test]
@@ -41,12 +60,12 @@ namespace DynamicReports.Tests
             var configuration = new ReportConfiguration("SimpleInsertDataTemplate.dotx", Helpers.PathToTestTemplates);
             var data = new Dictionary<string, object>
             {
-                {"Column1_Row1", "1 : 1"},
-                {"Column2_Row1", "2 : 1"},
-                {"Column3_Row1", "3 : 1"},
-                {"Column1_Row2", "1 : 2"},
-                {"Column2_Row2", "2 : 2"},
-                {"Column3_Row2", "3 : 2"},
+                {"Column1_Row1", "1 : 1" },
+                {"Column2_Row1", "2 : 1" },
+                {"Column3_Row1", "3 : 1" },
+                {"Column1_Row2", "1 : 2" },
+                {"Column2_Row2", "2 : 2" },
+                {"Column3_Row2", "3 : 2" },
             };
 
             reportManager.PluginMetadatas.Any(x => x.Name == MsWordPluginConstants.PluginName).ShouldBeTrue();

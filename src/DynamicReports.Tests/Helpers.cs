@@ -10,6 +10,7 @@
 
 using System.IO;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace DynamicReports.Tests
 {
