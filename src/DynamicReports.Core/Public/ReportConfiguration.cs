@@ -4,7 +4,7 @@
 // Created:            25.04.2017
 // 
 // <summary>
-// 
+// Параметры запуска генерации отчётов
 // </summary>
 // \***************************************************************************/
 
@@ -16,12 +16,24 @@ namespace DynamicReports.Core
     {
         private string _pathToTemplates;
 
-        public string TemplateName { get; }
-        public string TemplateExtension => Path.GetExtension(TemplateName);
+        /// <summary>
+        /// Имя обрабатываемого шаблона отчёта
+        /// </summary>
+        public string TemplateFilename { get; }
 
-        public ReportConfiguration(string templateName, string pathToTemplates = null)
+        /// <summary>
+        /// Расширение обрабатываемого шаблона отчёта
+        /// </summary>
+        public string TemplateExtension => Path.GetExtension(TemplateFilename);
+
+        /// <summary>
+        /// Имя результирующего файла отчёта
+        /// </summary>
+        public string TargetFilename { get; set; }
+
+        public ReportConfiguration(string templateFilename, string pathToTemplates = null)
         {
-            TemplateName = templateName;
+            TemplateFilename = templateFilename;
             _pathToTemplates = pathToTemplates ?? Directory.GetCurrentDirectory();
         }
     }

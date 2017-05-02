@@ -40,8 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FakeGenerator.cs" />
-    <Compile Include="FakePluginMetadata.cs" />
+    <Compile Include="FakeReportGenerator.cs" />
+    <Compile Include="FakeMetadata.cs" />
     <Compile Include="FakePluginConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

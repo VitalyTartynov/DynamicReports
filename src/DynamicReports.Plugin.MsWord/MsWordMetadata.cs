@@ -12,13 +12,13 @@ using DynamicReports.Core;
 
 namespace DynamicReports.Plugin.MsWord
 {
-    public class MsWordMetadata : IPluginMetadata
+    public class MsWordMetadata : IMetadata
     {
         public string TemplateExtension => MsWordPluginConstants.TemplateExtension;
-        public string OutputExtension => MsWordPluginConstants.OutputExtension;
+        public string TargetExtension => MsWordPluginConstants.OutputExtension;
         public string Name => MsWordPluginConstants.PluginName;
         public string Note => "Plugin for working with Microsoft Word templates throught OpenXML API";
 
-        public IPluginGenerator Instance => new MsWordGenerator();
+        public IReportGenerator Instance => new MsWordReportGenerator();
     }
 }

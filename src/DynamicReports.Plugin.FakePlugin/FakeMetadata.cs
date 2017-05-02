@@ -12,13 +12,13 @@ using DynamicReports.Core;
 
 namespace DynamicReports.Plugin.FakePlugin
 {
-    public class FakeMetadata : IPluginMetadata
+    public class FakeMetadata : IMetadata
     {
         public string TemplateExtension => FakePluginConstants.TemplateExtension;
-        public string OutputExtension => FakePluginConstants.OutputExtension;
+        public string TargetExtension => FakePluginConstants.OutputExtension;
         public string Name => FakePluginConstants.PluginName;
         public string Note => "Fake note";
 
-        public IPluginGenerator Instance => new FakeGenerator();
+        public IReportGenerator Instance => new FakeReportGenerator();
     }
 }

@@ -1,6 +1,6 @@
 ﻿// /****************************** DynamicReports ******************************\
 // Project:            DynamicReports.Plugin.MsWord
-// Filename:           MsWordGenerator.cs
+// Filename:           MsWordReportGenerator.cs
 // Created:            02.05.2017
 // 
 // <summary>
@@ -12,14 +12,24 @@ using DynamicReports.Core;
 
 namespace DynamicReports.Plugin.MsWord
 {
-    public class MsWordGenerator : IPluginGenerator
+    public class MsWordReportGenerator : IReportGenerator
     {
-        public void Generate(ReportConfiguration configuration)
+        public bool Initialize(ReportConfiguration configuration)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Save(string filename)
+        public bool PrepareTemplate()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool InsertData()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool Save()
         {
             throw new System.NotImplementedException();
         }

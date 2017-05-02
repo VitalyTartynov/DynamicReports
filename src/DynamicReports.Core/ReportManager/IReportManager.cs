@@ -1,6 +1,6 @@
 ﻿// /****************************** DynamicReports ******************************\
 // Project:            DynamicReports.Core
-// Filename:           IPluginGenerator.cs
+// Filename:           IReportManager.cs
 // Created:            02.05.2017
 // 
 // <summary>
@@ -10,10 +10,8 @@
 
 namespace DynamicReports.Core
 {
-    public interface IPluginGenerator
+    public interface IReportManager
     {
         void Generate(ReportConfiguration configuration);
-
-        void Save(string filename);
     }
 }

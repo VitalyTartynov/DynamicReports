@@ -21,7 +21,7 @@ namespace DynamicReports.Tests
         [Test]
         public void TryGenerateWithFakePlugin()
         {
-            var reportManager = new ReportManager();
+            var reportManager = new BaseReportManager();
             var configuration = new ReportConfiguration("FakeTemplate" + FakePluginConstants.TemplateExtension);
             
             Assert.Throws<NotImplementedException>(() => reportManager.Generate(configuration));

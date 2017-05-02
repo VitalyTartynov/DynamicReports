@@ -23,7 +23,7 @@ namespace DynamicReports.Tests
         [Test]
         public void TryGenerateMsWordReport()
         {
-            var reportManager = new ReportManager();
+            var reportManager = new BaseReportManager();
             var configuration = new ReportConfiguration("TestTemplate.dotx", Helpers.PathToTestTemplates);
 
             reportManager.PluginMetadatas.FirstOrDefault(x => x.Name == MsWordPluginConstants.PluginName).ShouldNotBeNull();

@@ -1,6 +1,6 @@
 ﻿// /****************************** DynamicReports ******************************\
 // Project:            DynamicReports.Tests
-// Filename:           FakeGenerator.cs
+// Filename:           FakeReportGenerator.cs
 // Created:            02.05.2017
 // 
 // <summary>
@@ -12,14 +12,24 @@ using DynamicReports.Core;
 
 namespace DynamicReports.Plugin.FakePlugin
 {
-    public class FakeGenerator : IPluginGenerator
+    public class FakeReportGenerator : IReportGenerator
     {
-        public void Generate(ReportConfiguration configuration)
+        public bool Initialize(ReportConfiguration configuration)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Save(string filename)
+        public bool PrepareTemplate()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool InsertData()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool Save()
         {
             throw new System.NotImplementedException();
         }

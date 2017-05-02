@@ -1,6 +1,6 @@
 ﻿// /****************************** DynamicReports ******************************\
 // Project:            DynamicReports.Core
-// Filename:           ReportManager.cs
+// Filename:           BaseReportManager.cs
 // Created:            25.04.2017
 // 
 // <summary>
@@ -16,13 +16,13 @@ using System.Reflection;
 
 namespace DynamicReports.Core
 {
-    public class ReportManager
+    public class BaseReportManager : IReportManager
     {
-        private const string PluginMask = "DynamicReports.Plugin.*.dll";
+        protected const string PluginMask = "DynamicReports.Plugin.*.dll";
 
-        internal ICollection<IPluginMetadata> PluginMetadatas { get; }
+        internal ICollection<IMetadata> PluginMetadatas { get; }
 
-        public ReportManager(string pathToPlugins = null)
+        public BaseReportManager(string pathToPlugins = null)
         {
             if (pathToPlugins == null)
             {
@@ -32,9 +32,9 @@ namespace DynamicReports.Core
             PluginMetadatas = LoadPluginMetadatas(pathToPlugins);
         }
 
-        private ICollection<IPluginMetadata> LoadPluginMetadatas(string pathToPlugins)
+        private ICollection<IMetadata> LoadPluginMetadatas(string pathToPlugins)
         {
-            var result = new List<IPluginMetadata>();
+            var result = new List<IMetadata>();
             foreach (var pluginFilename in Directory.GetFiles(pathToPlugins, PluginMask))
             {
                 try
@@ -42,10 +42,10 @@ namespace DynamicReports.Core
                     var assembly = Assembly.LoadFrom(new FileInfo(pluginFilename).FullName);
                     var pluginType = assembly
                         .GetTypes()
-                        .FirstOrDefault(type => type.IsClass && typeof(IPluginMetadata).IsAssignableFrom(type));
+                        .FirstOrDefault(type => type.IsClass && typeof(IMetadata).IsAssignableFrom(type));
                     if (pluginType == null) continue;
                     
-                    var plugin = Activator.CreateInstance(pluginType) as IPluginMetadata;
+                    var plugin = Activator.CreateInstance(pluginType) as IMetadata;
                     if (plugin == null) continue;
                         
                     result.Add(plugin);
@@ -60,7 +60,7 @@ namespace DynamicReports.Core
             return result;
         }
 
-        public void Generate(ReportConfiguration configuration)
+        public virtual void Generate(ReportConfiguration configuration)
         {
             var plugin = PluginMetadatas.FirstOrDefault(x => x.TemplateExtension == configuration.TemplateExtension);
             if (plugin == null)
@@ -68,7 +68,10 @@ namespace DynamicReports.Core
                 throw new PluginNotFoundException($"Plugin for file type '{configuration.TemplateExtension}' not found");
             }
 
-            plugin.Instance.Generate(configuration);
+            plugin.Instance.Initialize(configuration);
+            plugin.Instance.PrepareTemplate();
+            plugin.Instance.InsertData();
+            plugin.Instance.Save();
         }
     }
 }

@@ -23,7 +23,7 @@ namespace DynamicReports.Tests
         [Test]
         public void TryLoadingPlugins()
         {
-            var reportManager = new ReportManager(); // init, load plugins
+            var reportManager = new BaseReportManager(); // init, load plugins
             
             reportManager.PluginMetadatas.Any().ShouldBeTrue();
         }
@@ -31,7 +31,7 @@ namespace DynamicReports.Tests
         [Test]
         public void UnknownReportType()
         {
-            var reportManager = new ReportManager();
+            var reportManager = new BaseReportManager();
             var configuration = new ReportConfiguration("UnknownTemplate.unknown");
 
             Assert.Throws<PluginNotFoundException>(() => reportManager.Generate(configuration));

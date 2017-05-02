@@ -44,9 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MsWordGenerator.cs" />
+    <Compile Include="MsWordReportGenerator.cs" />
     <Compile Include="MsWordPluginConstants.cs" />
-    <Compile Include="MsWordPluginMetadata.cs" />
+    <Compile Include="MsWordMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

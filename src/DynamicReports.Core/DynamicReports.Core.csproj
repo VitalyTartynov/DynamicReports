@@ -42,12 +42,14 @@
   <ItemGroup>
     <Compile Include="Exceptions\PluginException.cs" />
     <Compile Include="Exceptions\PluginNotFoundException.cs" />
-    <Compile Include="Public\IPluginGenerator.cs" />
+    <Compile Include="Public\IReportGenerator.cs" />
+    <Compile Include="Public\IReportCombiner.cs" />
     <Compile Include="Public\ReportConfiguration.cs" />
-    <Compile Include="Public\IPluginMetadata.cs" />
+    <Compile Include="Public\IMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Exceptions\ReportGenerationException.cs" />
-    <Compile Include="ReportManager.cs" />
+    <Compile Include="ReportManager\BaseReportManager.cs" />
+    <Compile Include="ReportManager\IReportManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
