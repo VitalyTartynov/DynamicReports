@@ -81,10 +81,30 @@ namespace DynamicReports.Plugin.MsWord
                             var nameTag = Tags.NameTag.Match(fullTag).Value;
 
                             var data = _dictionaryData[nameTag];
+                            var newValue = data.ToString();
 
-                            var paragraph = currentCell.Elements<Paragraph>().First();
-                            var textElement = paragraph.Elements<Run>().First().Elements<Text>().First();
-                            textElement.Text = data.ToString();
+                            foreach (var paragraph in currentCell.Elements<Paragraph>())
+                            {
+                                RunProperties runProperties = null;
+                                Run run;
+                                while ((run = paragraph.GetFirstChild<Run>()) != null)
+                                {
+                                    if (runProperties == null)
+                                    {
+                                        runProperties = run.GetFirstChild<RunProperties>();
+                                    }
+
+                                    run.Remove();
+                                }
+                                
+                                run = new Run(new Text(newValue));
+                                if (runProperties != null)
+                                {
+                                    run.RunProperties = (RunProperties)runProperties.CloneNode(true);
+                                }
+
+                                paragraph.Append(run);
+                            }
                         }
                     }
                 }
