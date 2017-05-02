@@ -14,27 +14,56 @@ namespace DynamicReports.Core
 {
     public class ReportConfiguration
     {
-        private string _pathToTemplates;
+        private string _pathToTemplates = Directory.GetCurrentDirectory();
+        private string _pathToTarget = Directory.GetCurrentDirectory();
 
         /// <summary>
-        /// Имя обрабатываемого шаблона отчёта
+        /// Имя обрабатываемого шаблона отчёта (с расширением)
         /// </summary>
         public string TemplateFilename { get; }
 
         /// <summary>
         /// Расширение обрабатываемого шаблона отчёта
         /// </summary>
-        public string TemplateExtension => Path.GetExtension(TemplateFilename);
+        internal string TemplateExtension => Path.GetExtension(TemplateFilename);
 
         /// <summary>
-        /// Имя результирующего файла отчёта
+        /// Полный путь к шаблону отчёта с названием файла и расширением
+        /// </summary>
+        public string FullTemplatePath => Path.Combine(_pathToTemplates, TemplateFilename);
+
+        /// <summary>
+        /// Полный путь к результирующему файлу отчёта с названием файла и расширением
+        /// </summary>
+        public string FullTargetPath => Path.Combine(_pathToTarget, TargetFilename);
+
+        /// <summary>
+        /// Имя результирующего файла отчёта (с расширением?)
         /// </summary>
         public string TargetFilename { get; set; }
 
-        public ReportConfiguration(string templateFilename, string pathToTemplates = null)
+        public ReportConfiguration(string templateFilename)
         {
             TemplateFilename = templateFilename;
-            _pathToTemplates = pathToTemplates ?? Directory.GetCurrentDirectory();
+            TargetFilename = templateFilename;
+        }
+
+        public ReportConfiguration(string templateFilename, string pathToTemplates = null)
+            : this(templateFilename)
+        {
+            if (pathToTemplates != null)
+            {
+                _pathToTemplates = pathToTemplates;
+            }
+        }
+
+        public ReportConfiguration(string templateFilename, string pathToTemplates = null, string pathToTarget = null)
+            : this(templateFilename, pathToTemplates)
+        {
+            if (pathToTarget != null)
+            {
+                _pathToTarget = pathToTarget;
+            }
         }
     }
 }

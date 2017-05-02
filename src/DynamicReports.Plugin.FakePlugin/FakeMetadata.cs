@@ -19,6 +19,6 @@ namespace DynamicReports.Plugin.FakePlugin
         public string Name => FakePluginConstants.PluginName;
         public string Note => "Fake note";
 
-        public IReportGenerator Instance => new FakeReportGenerator();
+        public IReportGenerator Instance { get; } = new FakeReportGenerator();
     }
 }

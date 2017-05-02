@@ -14,6 +14,6 @@ namespace DynamicReports.Plugin.MsWord
     {
         public static string PluginName = "Microsoft Word";
         public static string TemplateExtension = ".dotx";
-        public static string OutputExtension = ".docx";
+        public static string TargetExtension = ".docx";
     }
 }

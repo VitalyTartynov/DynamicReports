@@ -15,10 +15,10 @@ namespace DynamicReports.Plugin.MsWord
     public class MsWordMetadata : IMetadata
     {
         public string TemplateExtension => MsWordPluginConstants.TemplateExtension;
-        public string TargetExtension => MsWordPluginConstants.OutputExtension;
+        public string TargetExtension => MsWordPluginConstants.TargetExtension;
         public string Name => MsWordPluginConstants.PluginName;
         public string Note => "Plugin for working with Microsoft Word templates throught OpenXML API";
 
-        public IReportGenerator Instance => new MsWordReportGenerator();
+        public IReportGenerator Instance { get; } = new MsWordReportGenerator();
     }
 }

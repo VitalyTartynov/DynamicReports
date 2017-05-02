@@ -8,12 +8,13 @@
 // </summary>
 // \***************************************************************************/
 
+using System.Collections.Generic;
 using JetBrains.Annotations;
 
 namespace DynamicReports.Core
 {
     public interface IReportManager
     {
-        void Generate([NotNull]ReportConfiguration configuration);
+        void Generate([NotNull]ReportConfiguration configuration, [NotNull]Dictionary<string,object> data);
     }
 }

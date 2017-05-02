@@ -8,6 +8,7 @@
 // </summary>
 // \***************************************************************************/
 
+using System.Collections.Generic;
 using System.Linq;
 
 using DynamicReports.Core;
@@ -23,7 +24,7 @@ namespace DynamicReports.Tests
         [Test]
         public void TryLoadingPlugins()
         {
-            var reportManager = new BaseReportManager(); // init, load plugins
+            var reportManager = new ReportManager(); // init, load plugins
             
             reportManager.PluginMetadatas.Any().ShouldBeTrue();
         }
@@ -31,10 +32,11 @@ namespace DynamicReports.Tests
         [Test]
         public void UnknownReportType()
         {
-            var reportManager = new BaseReportManager();
+            var reportManager = new ReportManager();
             var configuration = new ReportConfiguration("UnknownTemplate.unknown");
+            var emptyData = new Dictionary<string, object>();
 
-            Assert.Throws<PluginNotFoundException>(() => reportManager.Generate(configuration));
+            Assert.Throws<PluginNotFoundException>(() => reportManager.Generate(configuration, emptyData));
         }
     }
 }

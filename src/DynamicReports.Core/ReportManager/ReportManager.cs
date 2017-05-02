@@ -1,6 +1,6 @@
 ﻿// /****************************** DynamicReports ******************************\
 // Project:            DynamicReports.Core
-// Filename:           BaseReportManager.cs
+// Filename:           ReportManager.cs
 // Created:            25.04.2017
 // 
 // <summary>
@@ -10,19 +10,20 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 
 namespace DynamicReports.Core
 {
-    public class BaseReportManager : IReportManager
+    public class ReportManager : IReportManager
     {
         protected const string PluginMask = "DynamicReports.Plugin.*.dll";
 
         internal ICollection<IMetadata> PluginMetadatas { get; }
 
-        public BaseReportManager(string pathToPlugins = null)
+        public ReportManager(string pathToPlugins = null)
         {
             if (pathToPlugins == null)
             {
@@ -60,7 +61,7 @@ namespace DynamicReports.Core
             return result;
         }
 
-        public virtual void Generate(ReportConfiguration configuration)
+        public virtual void Generate(ReportConfiguration configuration, Dictionary<string, object> data)
         {
             var plugin = PluginMetadatas.FirstOrDefault(x => x.TemplateExtension == configuration.TemplateExtension);
             if (plugin == null)
@@ -68,10 +69,18 @@ namespace DynamicReports.Core
                 throw new PluginNotFoundException($"Plugin for file type '{configuration.TemplateExtension}' not found");
             }
 
-            plugin.Instance.Initialize(configuration);
+            plugin.Instance.Initialize(configuration, data);
             plugin.Instance.PrepareTemplate();
             plugin.Instance.InsertData();
             plugin.Instance.Save();
+
+            Open(configuration.FullTargetPath);
+        }
+
+        protected virtual void Open(string fullPath)
+        {
+            var process = new Process {StartInfo = {FileName = fullPath}};
+            process.Start();
         }
     }
 }

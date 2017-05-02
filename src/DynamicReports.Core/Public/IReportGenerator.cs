@@ -8,13 +8,14 @@
 // </summary>
 // \***************************************************************************/
 
+using System.Collections.Generic;
 using JetBrains.Annotations;
 
 namespace DynamicReports.Core
 {
     public interface IReportGenerator
     {
-        void Initialize([NotNull]ReportConfiguration configuration);
+        void Initialize([NotNull]ReportConfiguration configuration, Dictionary<string, object> data);
         void PrepareTemplate();
         void InsertData();
         void Save();

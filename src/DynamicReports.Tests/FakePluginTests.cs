@@ -9,6 +9,7 @@
 // \***************************************************************************/
 
 using System;
+using System.Collections.Generic;
 using DynamicReports.Core;
 using DynamicReports.Plugin.FakePlugin;
 using NUnit.Framework;
@@ -21,10 +22,11 @@ namespace DynamicReports.Tests
         [Test]
         public void TryGenerateWithFakePlugin()
         {
-            var reportManager = new BaseReportManager();
+            var reportManager = new ReportManager();
             var configuration = new ReportConfiguration("FakeTemplate" + FakePluginConstants.TemplateExtension);
-            
-            Assert.Throws<NotImplementedException>(() => reportManager.Generate(configuration));
+            var emptyData = new Dictionary<string, object>();
+
+            Assert.Throws<NotImplementedException>(() => reportManager.Generate(configuration, emptyData));
         }
     }
 }
