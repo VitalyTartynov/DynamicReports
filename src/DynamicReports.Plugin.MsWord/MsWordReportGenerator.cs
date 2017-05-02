@@ -14,22 +14,22 @@ namespace DynamicReports.Plugin.MsWord
 {
     public class MsWordReportGenerator : IReportGenerator
     {
-        public bool Initialize(ReportConfiguration configuration)
+        public void Initialize(ReportConfiguration configuration)
         {
             throw new System.NotImplementedException();
         }
 
-        public bool PrepareTemplate()
+        public void PrepareTemplate()
         {
             throw new System.NotImplementedException();
         }
 
-        public bool InsertData()
+        public void InsertData()
         {
             throw new System.NotImplementedException();
         }
 
-        public bool Save()
+        public void Save()
         {
             throw new System.NotImplementedException();
         }

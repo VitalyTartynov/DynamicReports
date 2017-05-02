@@ -8,28 +8,34 @@
 // </summary>
 // \***************************************************************************/
 
+using System;
 using DynamicReports.Core;
 
 namespace DynamicReports.Plugin.FakePlugin
 {
     public class FakeReportGenerator : IReportGenerator
     {
-        public bool Initialize(ReportConfiguration configuration)
+        private ReportConfiguration _configuration;
+
+        public void Initialize(ReportConfiguration configuration)
+        {
+            if (configuration == null)
+                throw new ArgumentNullException(nameof(configuration));
+
+            _configuration = configuration;
+        }
+
+        public void PrepareTemplate()
         {
             throw new System.NotImplementedException();
         }
 
-        public bool PrepareTemplate()
+        public void InsertData()
         {
             throw new System.NotImplementedException();
         }
 
-        public bool InsertData()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public bool Save()
+        public void Save()
         {
             throw new System.NotImplementedException();
         }
