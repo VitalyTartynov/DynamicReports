@@ -1,6 +1,6 @@
 ﻿// /****************************** DynamicReports ******************************\
 // Project:            DynamicReports.Tests
-// Filename:           FakePlugin.cs
+// Filename:           FakeGenerator.cs
 // Created:            02.05.2017
 // 
 // <summary>
@@ -10,18 +10,10 @@
 
 using DynamicReports.Core;
 
-namespace DynamicReports.Tests
+namespace DynamicReports.Plugin.FakePlugin
 {
-    public class FakePlugin : IPlugin
+    public class FakeGenerator : IPluginGenerator
     {
-        public string Extension => FakePluginConstants.Extension;
-        public string Name => FakePluginConstants.Name;
-        public string Note => "Fake note";
-
-        public void OnLoading()
-        {
-        }
-
         public void Generate(ReportConfiguration configuration)
         {
             throw new System.NotImplementedException();

@@ -14,10 +14,10 @@ namespace DynamicReports.Core
 {
     public class ReportConfiguration
     {
+        private string _pathToTemplates;
+
         public string TemplateName { get; }
         public string TemplateExtension => Path.GetExtension(TemplateName);
-
-        private string _pathToTemplates;
 
         public ReportConfiguration(string templateName, string pathToTemplates = null)
         {

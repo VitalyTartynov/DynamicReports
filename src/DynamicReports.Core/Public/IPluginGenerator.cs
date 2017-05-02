@@ -1,7 +1,7 @@
 ﻿// /****************************** DynamicReports ******************************\
 // Project:            DynamicReports.Core
-// Filename:           Constants.cs
-// Created:            28.04.2017
+// Filename:           IPluginGenerator.cs
+// Created:            02.05.2017
 // 
 // <summary>
 // 
@@ -10,9 +10,10 @@
 
 namespace DynamicReports.Core
 {
-    public static class Constants
+    public interface IPluginGenerator
     {
-        public static string MsWordPluginName = "Microsoft Word";
-        public static string MsWordExtension = ".dotx";
+        void Generate(ReportConfiguration configuration);
+
+        void Save(string filename);
     }
 }

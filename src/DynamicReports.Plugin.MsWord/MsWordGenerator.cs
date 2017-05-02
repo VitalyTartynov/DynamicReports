@@ -1,7 +1,7 @@
 ﻿// /****************************** DynamicReports ******************************\
 // Project:            DynamicReports.Plugin.MsWord
-// Filename:           MsWordPlugin.cs
-// Created:            25.04.2017
+// Filename:           MsWordGenerator.cs
+// Created:            02.05.2017
 // 
 // <summary>
 // 
@@ -12,16 +12,8 @@ using DynamicReports.Core;
 
 namespace DynamicReports.Plugin.MsWord
 {
-    public class MsWordPlugin : IPlugin
+    public class MsWordGenerator : IPluginGenerator
     {
-        public string Extension => Constants.MsWordExtension;
-        public string Name => Constants.MsWordPluginName;
-        public string Note => "Plugin for working with Microsoft Word templates throught OpenXML API";
-
-        public void OnLoading()
-        {
-        }
-
         public void Generate(ReportConfiguration configuration)
         {
             throw new System.NotImplementedException();

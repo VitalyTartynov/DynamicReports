@@ -20,7 +20,7 @@ namespace DynamicReports.Core
     {
         private const string PluginMask = "DynamicReports.Plugin.*.dll";
 
-        internal ICollection<IPlugin> Plugins { get; }
+        internal ICollection<IPluginMetadata> PluginMetadatas { get; }
 
         public ReportManager(string pathToPlugins = null)
         {
@@ -29,12 +29,12 @@ namespace DynamicReports.Core
                 pathToPlugins = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             }
 
-            Plugins = LoadPlugins(pathToPlugins);
+            PluginMetadatas = LoadPluginMetadatas(pathToPlugins);
         }
 
-        private ICollection<IPlugin> LoadPlugins(string pathToPlugins)
+        private ICollection<IPluginMetadata> LoadPluginMetadatas(string pathToPlugins)
         {
-            var result = new List<IPlugin>();
+            var result = new List<IPluginMetadata>();
             foreach (var pluginFilename in Directory.GetFiles(pathToPlugins, PluginMask))
             {
                 try
@@ -42,13 +42,12 @@ namespace DynamicReports.Core
                     var assembly = Assembly.LoadFrom(new FileInfo(pluginFilename).FullName);
                     var pluginType = assembly
                         .GetTypes()
-                        .FirstOrDefault(type => type.IsClass && typeof(IPlugin).IsAssignableFrom(type));
+                        .FirstOrDefault(type => type.IsClass && typeof(IPluginMetadata).IsAssignableFrom(type));
                     if (pluginType == null) continue;
                     
-                    var plugin = Activator.CreateInstance(pluginType) as IPlugin;
+                    var plugin = Activator.CreateInstance(pluginType) as IPluginMetadata;
                     if (plugin == null) continue;
                         
-                    plugin.OnLoading();
                     result.Add(plugin);
                 }
                 catch (Exception)
@@ -63,13 +62,13 @@ namespace DynamicReports.Core
 
         public void Generate(ReportConfiguration configuration)
         {
-            var plugin = Plugins.FirstOrDefault(x => x.Extension == configuration.TemplateExtension);
+            var plugin = PluginMetadatas.FirstOrDefault(x => x.TemplateExtension == configuration.TemplateExtension);
             if (plugin == null)
             {
                 throw new PluginNotFoundException($"Plugin for file type '{configuration.TemplateExtension}' not found");
             }
 
-            plugin.Generate(configuration);
+            plugin.Instance.Generate(configuration);
         }
     }
 }

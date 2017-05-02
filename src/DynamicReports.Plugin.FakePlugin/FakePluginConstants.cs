@@ -8,11 +8,12 @@
 // </summary>
 // \***************************************************************************/
 
-namespace DynamicReports.Tests
+namespace DynamicReports.Plugin.FakePlugin
 {
     public static class FakePluginConstants
     {
-        public static string Extension => ".fake";
-        public static string Name => "FakePlugin";
+        public static string PluginName => "FakePlugin";
+        public static string TemplateExtension => ".fake";
+        public static string OutputExtension => ".fakeout";
     }
 }

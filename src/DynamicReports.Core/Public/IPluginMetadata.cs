@@ -1,6 +1,6 @@
 ﻿// /****************************** DynamicReports ******************************\
 // Project:            DynamicReports.Core
-// Filename:           IPlugin.cs
+// Filename:           IPluginMetadata.cs
 // Created:            25.04.2017
 // 
 // <summary>
@@ -10,16 +10,13 @@
 
 namespace DynamicReports.Core
 {
-    public interface IPlugin
+    public interface IPluginMetadata
     {
-        string Extension { get; }
+        string TemplateExtension { get; }
+        string OutputExtension { get; }
         string Name { get; }
         string Note { get; }
 
-        void OnLoading();
-
-        void Generate(ReportConfiguration configuration);
-
-        void Save(string filename);
+        IPluginGenerator Instance { get; }
     }
 }

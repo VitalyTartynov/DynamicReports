@@ -25,7 +25,7 @@ namespace DynamicReports.Tests
         {
             var reportManager = new ReportManager(); // init, load plugins
             
-            reportManager.Plugins.Any().ShouldBeTrue();
+            reportManager.PluginMetadatas.Any().ShouldBeTrue();
         }
 
         [Test]

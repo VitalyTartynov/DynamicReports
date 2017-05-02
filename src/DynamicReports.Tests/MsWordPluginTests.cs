@@ -11,6 +11,7 @@
 using System;
 using System.Linq;
 using DynamicReports.Core;
+using DynamicReports.Plugin.MsWord;
 using FluentAssert;
 using NUnit.Framework;
 
@@ -25,7 +26,7 @@ namespace DynamicReports.Tests
             var reportManager = new ReportManager();
             var configuration = new ReportConfiguration("TestTemplate.dotx", Helpers.PathToTestTemplates);
 
-            reportManager.Plugins.FirstOrDefault(x => x.Name == Constants.MsWordPluginName).ShouldNotBeNull();
+            reportManager.PluginMetadatas.FirstOrDefault(x => x.Name == MsWordPluginConstants.PluginName).ShouldNotBeNull();
 
             Assert.Throws<NotImplementedException>(() => reportManager.Generate(configuration));
         }
