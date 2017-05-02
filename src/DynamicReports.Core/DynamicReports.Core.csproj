@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="Exceptions\PluginException.cs" />
+    <Compile Include="Exceptions\PluginNotFoundException.cs" />
     <Compile Include="Public\ReportConfiguration.cs" />
     <Compile Include="Public\IPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

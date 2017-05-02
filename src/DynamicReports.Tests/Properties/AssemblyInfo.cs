@@ -1,11 +1,10 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("DynamicReports.Core.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Vitaliy Tartunov")]
+[assembly: AssemblyCompany("Vitaly Tartynov")]
 [assembly: AssemblyProduct("DynamicReports.Tests")]
 [assembly: AssemblyCopyright("MIT © 2017")]
 [assembly: AssemblyTrademark("")]

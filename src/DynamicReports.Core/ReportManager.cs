@@ -66,7 +66,7 @@ namespace DynamicReports.Core
             var plugin = Plugins.FirstOrDefault(x => x.Extension == configuration.TemplateExtension);
             if (plugin == null)
             {
-                throw new ReportGenerationException($"Plugin for file type '{configuration.TemplateExtension}' not found");
+                throw new PluginNotFoundException($"Plugin for file type '{configuration.TemplateExtension}' not found");
             }
 
             plugin.Generate(configuration);

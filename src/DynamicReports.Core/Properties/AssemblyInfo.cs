@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("DynamicReports.Core")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Vitaliy Tartunov")]
+[assembly: AssemblyCompany("Vitaly Tartynov")]
 [assembly: AssemblyProduct("DynamicReports.Core")]
 [assembly: AssemblyCopyright("MIT © 2017")]
 [assembly: AssemblyTrademark("")]

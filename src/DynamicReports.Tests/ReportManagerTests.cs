@@ -8,7 +8,6 @@
 // </summary>
 // \***************************************************************************/
 
-using System;
 using System.Linq;
 
 using DynamicReports.Core;
@@ -26,17 +25,16 @@ namespace DynamicReports.Tests
         {
             var reportManager = new ReportManager(); // init, load plugins
             
-            reportManager.Plugins.Count.ShouldBeGreaterThan(0);
+            reportManager.Plugins.Any().ShouldBeTrue();
         }
 
         [Test]
-        public void TryGenerateMsWordReport()
+        public void UnknownReportType()
         {
             var reportManager = new ReportManager();
-            var configuration = new ReportConfiguration("TestTemplate.dotx", Helpers.PathToTestTemplates);
+            var configuration = new ReportConfiguration("UnknownTemplate.unknown");
 
-            reportManager.Plugins.FirstOrDefault(x => x.Name == Constants.MsWordPluginName).ShouldNotBeNull();
-            Assert.Throws<NotImplementedException>(() => reportManager.Generate(configuration));
+            Assert.Throws<PluginNotFoundException>(() => reportManager.Generate(configuration));
         }
     }
 }

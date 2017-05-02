@@ -9,6 +9,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicReports.Tests", "Dyn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicReports.Plugin.MsWord", "DynamicReports.Plugin.MsWord\DynamicReports.Plugin.MsWord.csproj", "{60711CF8-C694-4F15-990B-2D80BF99469E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7CBDF763-542E-4800-AA2A-98E4E91E698F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{51EDD220-5569-4864-9DBA-94DC2E8C6CBE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{D020E25C-FBF5-4238-B535-B96BD3DF4B2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicReports.Plugin.FakePlugin", "DynamicReports.Plugin.FakePlugin\DynamicReports.Plugin.FakePlugin.csproj", "{336D0B74-F9B1-4F25-B494-89430C41E5EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,8 +35,18 @@ Global
 		{60711CF8-C694-4F15-990B-2D80BF99469E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60711CF8-C694-4F15-990B-2D80BF99469E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60711CF8-C694-4F15-990B-2D80BF99469E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{336D0B74-F9B1-4F25-B494-89430C41E5EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{336D0B74-F9B1-4F25-B494-89430C41E5EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{336D0B74-F9B1-4F25-B494-89430C41E5EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{336D0B74-F9B1-4F25-B494-89430C41E5EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{08FB57D2-1EC1-4BF7-A795-8C9F44816986} = {D020E25C-FBF5-4238-B535-B96BD3DF4B2F}
+		{16D8CE78-3D79-41B4-8579-4DEAE4698146} = {7CBDF763-542E-4800-AA2A-98E4E91E698F}
+		{60711CF8-C694-4F15-990B-2D80BF99469E} = {51EDD220-5569-4864-9DBA-94DC2E8C6CBE}
+		{336D0B74-F9B1-4F25-B494-89430C41E5EE} = {7CBDF763-542E-4800-AA2A-98E4E91E698F}
 	EndGlobalSection
 EndGlobal
