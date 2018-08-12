@@ -8,7 +8,6 @@
 // </summary>
 // \***************************************************************************/
 
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -35,6 +34,7 @@ namespace DynamicReports.Tests
         }
 
         [Test]
+        [Ignore("This test isn't completed")]
         public void InsertRowsFromCollection()
         {
             var reportManager = new ReportManager();
@@ -54,6 +54,7 @@ namespace DynamicReports.Tests
         }
 
         [Test]
+        [Ignore("Only manual usage")]
         public void InsertDataInTemplate()
         {
             var reportManager = new ReportManager();
